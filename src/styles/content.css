@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.main-content {
+  padding: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffc8c8;
+}
+.responsive-content{
+  display: none;
+}
+.content {
+  flex: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.main-content-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content .content-heading {
+  font-size: 2.75rem;
+}
+.content .content-paragraph {
+  max-width: 60%;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.content_image {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 992px) {
+  .content-heading {
+    font-size: 2.2rem;
+  }
+  .content .content-paragraph {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 772px) {
+  .main-content {
+    display: none;
+  }
+  .responsive-content {
+    display: block;
+  }
+  .responsive-content-image {
+    background-color: #ffc8c8;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+  .responsive-content-image img{
+    width: 100%;
+    height: auto;
+  }
+  .responsive-content-text {
+    padding: 1% 5%;
+  }
+  .responsive-content-text .heading h1{
+    font-family: "Caudex", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3rem;
+  }
+  .responsive-content-text .content-paragraph p{
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 480px){
+  .responsive-content-text .heading h1{
+    font-size: 2.5rem;
+  }
+  .responsive-content-text .content-paragraph p{
+    font-size: 1.2rem;
+  }
+}
