@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/navbar.css"
 import logo from "../assets/Logo.png"
-import logo from "../Media/Logo.png";
 import { IoCartSharp } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";

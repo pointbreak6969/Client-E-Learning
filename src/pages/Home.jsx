@@ -7,7 +7,7 @@ function Home(){
     return(
         <>
         <Navbar />
-        <Maincontent />
+        <Content />
         <CoursesComponent/>
         </>
     )

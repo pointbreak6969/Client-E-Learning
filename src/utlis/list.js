@@ -1,5 +1,5 @@
 import django from "../assets/django.png"
-import webdev from "../assets/web development.png"
+import webdev from "../assets/webDev.jpg"
 import rust from "../assets/Rust.png"
 import nodejs from "../assets/node js.png"
 import hacking from "../assets/hacking.png"
