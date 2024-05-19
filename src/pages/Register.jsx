@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { validateEmail } from "../utlis/validateEmail";
 import "../styles/register.css";
-import logo from "../assets/Logo.png"
-import student from "../assets/student.png"
+import logo from "../assets/Logo.png";
+import student from "../assets/student.png";
 import { useNavigate, Link } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import { FaArrowLeft } from "react-icons/fa6";
@@ -15,6 +15,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Input from "@mui/material/Input";
+import axios from "axios";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -23,12 +24,8 @@ const Register = () => {
   };
   const [registerName, setRegisterName] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState({
-    value: "",
-  });
-  const [registerConfirmPassword, setRegisterConfirmPassword] = useState({
-    value: "",
-  });
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [registerConfirmPassword, setRegisterConfirmPassword] = useState("");
   const [checkbox, setCheckbox] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -40,19 +37,18 @@ const Register = () => {
   const IsFormValid = () => {
     return (
       validateEmail(registerEmail) &&
-      registerPassword.value.length >= 8 &&
+      registerPassword.length >= 8 &&
       checkbox === true &&
-      registerPassword.value === registerConfirmPassword.value
+      registerPassword === registerConfirmPassword
     );
   };
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     try {
       const registerData = {
-        name: registerName,
+        fullName: registerName,
         email: registerEmail,
-        password: registerPassword.value,
-        role: "student",
+        password: registerPassword,
       };
       // if (IsFormValid()) {
       //   await fetch("http://localhost:5050/auth/userRegister", {
@@ -82,6 +78,19 @@ const Register = () => {
       // } else {
       //   setErrorMessage("Please Fill the Form Properly");
       // }
+      if (IsFormValid()) {
+        const response = await axios.post(
+          "http://localhost:5050/api/user/register",
+          registerData,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          },
+          {withCredentials: true,}
+        );
+        console.log(response.data);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -141,11 +150,9 @@ const Register = () => {
                 </InputLabel>
                 <Input
                   id="standard-adornment-password"
-                  value={registerPassword.value}
+                  value={registerPassword}
                   onChange={(e) => {
-                    setRegisterPassword({
-                      value: e.target.value,
-                    });
+                    setRegisterPassword(e.target.value);
                   }}
                   type={showPassword ? "text" : "password"}
                   endAdornment={
@@ -167,11 +174,9 @@ const Register = () => {
                 </InputLabel>
                 <Input
                   type={showPassword ? "text" : "password"}
-                  value={registerConfirmPassword.value}
+                  value={registerConfirmPassword}
                   onChange={(e) => {
-                    setRegisterConfirmPassword({
-                      value: e.target.value,
-                    });
+                    setRegisterConfirmPassword(e.target.value);
                   }}
                   endAdornment={
                     <InputAdornment position="end">
