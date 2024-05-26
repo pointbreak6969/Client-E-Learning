@@ -24,30 +24,30 @@ const TestNavbar = () => {
         </div>
       </div>
       <div className="hidden md:grid md:grid-cols-12 p-5 ">
-        <div className="md:col-span-3 md:grid md:grid-cols-3 items-center justify-items-center">
+        <div className="md:col-span-3 md:grid md:grid-cols-2 md:items-center md:justify-items-center xl:grid-cols-3">
           <div>
-            <img src={logo} alt="" className="w-20" />
+            <img src={logo} alt="" className="w-20 cursor-pointer" />
+          </div>
+          <div className="hidden xl:block">
+            <p className = "text-lg cursor-pointer">About Us</p>
           </div>
           <div>
-            <p className = "text-lg">About Us</p>
-          </div>
-          <div>
-            <p className = "text-lg">Categories</p>
+            <p className = "text-lg cursor-pointer">Categories</p>
           </div>
         </div>
         <div className="md:col-span-6 md:flex md:justify-center md:items-center md:gap-5 md:border-2 md:rounded-3xl ">
-        <IoIosSearch className="text-3xl  ml-5 opacity-50"/>
+        <IoIosSearch className="text-3xl  ml-5 opacity-50 cursor-pointer"/>
           <input
             type="text"
             placeholder="Search for Courses"
-            className="w-full   border-gray-300 rounded-lg border-0 focus:outline-none focus:border-none placeholder:text-lg "
+            className=" w-full   border-gray-300 rounded-lg border-0 focus:outline-none focus:border-none placeholder:text-lg"
           />
         </div>
-        <div className="md:col-span-3 md:grid md:grid-cols-4 items-center justify-items-center ">
-          <div><p className = "text-lg">Business</p></div>
-          <div><p className = "text-lg">Teacher</p></div>
-          <div><p className = "text-lg">Log in</p></div>
-          <div><p className = "text-lg">Sign up</p></div>
+        <div className="md:col-span-3 md:grid md:grid-cols-2   md:items-center md:justify-items-center lg:grid-cols-3 xl:grid-cols-4 ">
+          <div className="hidden xl:block cursor-pointer"><p className = "text-lg">Business</p></div>
+          <div className="hidden lg:block cursor-pointer"><p className = "text-lg">Teacher</p></div>
+          <div className="border-2 px-4 py-2 border-slate-500 hover:bg-gray-200 cursor-pointer"><p className = "text-lg">Log in</p></div>
+          <div className="bg-black px-4 py-2 text-white cursor-pointer"><p className = "text-lg">Sign up</p></div>
           
         </div>
       </div>
