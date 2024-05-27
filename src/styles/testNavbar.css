@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.category{
+    position: relative;
+}
+.dropdown{
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    padding: 0.5rem;
+}
+
+.category:hover .dropdown{
+    display: block;
+}
+
+
+.mobile-categories{
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20rem;
+}
+
+.close{
+    position: absolute;
+    top: 2%;
+    right: -20%;
+    background-color: #fff;
+    color: #000;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
