@@ -7,6 +7,8 @@ import About from "./pages/About";
 import SearchCourse from "./components/SearchCourse";
 import BecomeAInstructor from "./pages/BecomeAInstructor";
 import TestNavbar from "./components/TestNavbar";
+import Video from "./components/Video.jsx";
+import Navbar from "./components/Navbar";
 function App() {
   return (
     // <BrowserRouter>
@@ -20,7 +22,10 @@ function App() {
     //     <Route path="/testNavbar" Component={TestNavbar} />
     //   </Routes>
     // </BrowserRouter>
-    <TestNavbar/>
+    // <TestNavbar/>
+   
+    
+    <Video/>
   );
 }
 

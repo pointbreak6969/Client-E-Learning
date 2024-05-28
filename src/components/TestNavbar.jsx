@@ -45,7 +45,7 @@ const TestNavbar = () => {
           ref={ref}
             className={
               toggleSidebar
-                ? "mobile-categories h-screen bg-white z-10 transition-all duration-500 ease-out"
+                ? "h-screen bg-white transition-all duration-1000 ease-out mobile-categories"
                 : "hidden"
             }
           >
@@ -104,7 +104,7 @@ const TestNavbar = () => {
             <div
               className={
                 toggleSidebar
-                  ? "block z-20  text-2xl rounded-full p-2 close transition-all duration-500 ease-out"
+                  ? " z-20  text-2xl rounded-full p-2 close transition-all duration-500 ease-out"
                   : "hidden"
               }
             >
@@ -118,28 +118,28 @@ const TestNavbar = () => {
           </div>
         </div>
         <div>
-          <img src={logo} alt="" className="w-20" />
+          <img src={logo} alt="" className="w-20"/>
         </div>
         <div className="flex">
           <div className="pr-2">
-            <MdOutlineSearch className="text-3xl" />
+            <MdOutlineSearch className="text-3xl"/>
           </div>
           <div className="pl-2">
-            <BsCart3 className="text-3xl" />
+            <BsCart3 className="text-3xl"/>
           </div>
         </div>
       </div>
-      <div className="hidden md:grid md:grid-cols-12 p-5 items-center  shadow-xl">
+      <div className="hidden md:grid md:grid-cols-12 px-5 py-3 items-center">
         <div className="md:col-span-3 md:grid md:grid-cols-2 md:items-center md:justify-items-center xl:grid-cols-3">
           <div>
-            <img src={logo} alt="" className="w-20 cursor-pointer" />
+            <img src={logo} alt="" className="w-20 cursor-pointer"/>
           </div>
           <div className="hidden xl:block">
             <p className="text-lg cursor-pointer">About Us</p>
           </div>
-          <div className="category">
+          <div className="category w-full h-full inline-flex items-center">
             <p className="text-lg cursor-pointer">Categories</p>
-            <div className=" hidden shadow-xl dropdown">
+            <div className=" hidden shadow-xl p-2 w-72 dropdown">
               <div className="item">Development</div>
               <div className="item">Business</div>
               <div className="item">Finance</div>
