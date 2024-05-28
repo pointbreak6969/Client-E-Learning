@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 import Content from "../components/Content";
 import CoursesComponent from "../components/CourseComponent";
-import Video from "../components/Video";
+import Video from "./Video";
 
 function Home(){
     return(

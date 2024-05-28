@@ -11,7 +11,7 @@ const categories = [
       name: 'React Basics',
       description: 'Software developers and engineers create new software-based services and products, while IT profession ........',
       image: react,
-      video: "https://www.youtube.com/watch?v=SqcY0GlETPk&ab_channel=ProgrammingwithMosh",
+      video: "https://cdn.pixabay.com/video/2017/03/06/8204-207209281_large.mp4",
       level: 'Basic',
       author: 'Buddhi Raj Gurung',
       rating: 3,
