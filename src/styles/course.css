@@ -1,0 +1,11 @@
+.custom-grid-container {
+    display: grid;
+    overflow-x: auto;
+  }
+  
+  .custom-grid {
+    display: grid;
+    grid-auto-columns: calc((100% - (5 - 1) * 1.6rem) / 5);
+    grid-auto-flow: column;
+    gap: 1.6rem;
+  }

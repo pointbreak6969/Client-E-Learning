@@ -1,28 +1,39 @@
 import { categories } from "../utlis/list";
 import Course from "./Course";
+import "../styles/course.css"
+import { useRef } from 'react';
+const CourseComponent = () => { 
+  const scrollContainerRef = useRef(null);
 
-const CoursesComponent = () => {
-    return (
-      <>
-        <div className="d-flex">
-          {categories.map((item, index) => {
-            return (
-              <div key={index} className="p-3">
-                <Course
-                  name={item.name}
-                  image={item.image}
-                  author={item.author}
-                  rating={item.rating}
-                  previousPrice={item.previousPrice}
-                  currentPrice={item.currentPrice}
-                />
-              </div>
-            );
-          })}
-        </div>
-      </>
-    );
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+    }
   };
-  
-  export default CoursesComponent;
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+    }
+  };
+  return (
+    <div className="overflow-x-auto custom-grid-container">
+      <div className="custom-grid">
+        {categories.map((course, index) => (
+          <Course
+            key={index}
+            name={course.name}
+            author={course.author}
+            rating={course.rating}
+            currentPrice={course.currentPrice}
+            previousPrice={course.previousPrice}
+            image={course.image}
+          />
+        ))}
+      </div>
+    </div>
+    
+  );
+};
+export default CourseComponent;
   
