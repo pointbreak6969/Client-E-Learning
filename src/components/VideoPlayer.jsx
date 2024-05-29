@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
+
 import ReactPlayer from "react-player";
 const VideoPlayer = ({ product }) => {
   const [playbackRate, setPlaybackRate] = useState(1);
