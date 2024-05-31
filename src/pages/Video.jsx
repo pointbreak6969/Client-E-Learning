@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import VideoPlayer from "../components/VideoPlayer";
 import { FaShare } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa";
-import "../styles/videoPage.css"
+import "../styles/videoPage.css";
+import VideoContents from "../components/VideoContents";
 const Video = () => {
   const { name } = useParams();
   // const product = categories.find((category) => category.name === name);
@@ -32,8 +33,14 @@ const Video = () => {
           </button>
         </div>
       </div>
-      <div className="video-container">
-        <VideoPlayer product={product} className= "video-player" />
+      <div className="grid grid-cols-3 grid-rows-2">
+        <div className="react-player ">
+          <VideoPlayer product={product} />
+        </div>
+        <div className="video-contents">
+          <VideoContents />
+        </div>
+        <div className="video-details"></div>
       </div>
     </>
   );

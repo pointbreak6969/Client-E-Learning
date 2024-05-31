@@ -9,6 +9,7 @@ import BecomeAInstructor from "./pages/BecomeAInstructor";
 import TestNavbar from "./components/TestNavbar";
 import Video from "./pages/Video.jsx";
 import Navbar from "./components/Navbar";
+import VideoContents from "./components/VideoContents.jsx"
 function App() {
   return (
     // <BrowserRouter>
@@ -23,7 +24,8 @@ function App() {
     //   </Routes>
     // </BrowserRouter>
     // <TestNavbar/>
-    <Video/>
+    // <Video/>
+    <VideoContents/>
   );
 }
 

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 import ReactPlayer from "react-player";
 const VideoPlayer = ({ product }) => {
@@ -13,6 +13,8 @@ const VideoPlayer = ({ product }) => {
   return (
     <>
       <ReactPlayer
+       width='100%'
+       height='100%'
         url={product.video}
         playing={false}
         controls={true}

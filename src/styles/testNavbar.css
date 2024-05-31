@@ -7,7 +7,7 @@
 .category {
   position: relative;
 }
-.dropdown {
+.category .dropdown {
   position: absolute;
   top: 100%;
   z-index: 1;
@@ -28,7 +28,7 @@
   width: 20rem;
 }
 
-.close {
+.mobile-categories .close {
   position: absolute;
   top: 2%;
   right: -20%;
@@ -37,7 +37,7 @@
   padding: 0.5rem;
   cursor: pointer;
 }
-.item {
+.category .dropdown .item {
   font-size: 1.25rem;
   font-family: "Roboto", sans-serif;
   opacity: 0.8;

@@ -1,0 +1,6 @@
+.video-units{
+    position: relative;
+}
+.video-units .video-unit-name{
+    padding: 0 5%;
+}
