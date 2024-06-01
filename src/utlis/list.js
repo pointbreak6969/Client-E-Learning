@@ -29,55 +29,55 @@ const categories = [
           "React vs Svelte",
         ],
       },
-      // {
-      //   UnitName: "Setting up React",
-      //   Lessons: [
-      //     "Installing Node.js",
-      //     "Installing React",
-      //     "Creating a new React App",
-      //     "Running the React App",
-      //   ],
-      // },
-      // {
-      //   UnitName: "React Components",
-      //   Lessons: [
-      //     "Functional Components",
-      //     "Class Components",
-      //     "State",
-      //     "Props",
-      //   ],
-      // },
-      // {
-      //   UnitName: "React Hooks",
-      //   Lessons: ["useState", "useEffect", "useContext", "useReducer"],
-      // },
-      // {
-      //   UnitName: "React Router",
-      //   Lessons: [
-      //     "Installing React Router",
-      //     "Creating Routes",
-      //     "Navigating between Routes",
-      //     "Passing Props",
-      //   ],
-      // },
-      // {
-      //   UnitName: "React Redux",
-      //   Lessons: [
-      //     "Installing Redux",
-      //     "Creating a Store",
-      //     "Creating Reducers",
-      //     "Creating Actions",
-      //   ],
-      // },
-      // {
-      //   UnitName: "React Testing",
-      //   Lessons: [
-      //     "Installing Jest",
-      //     "Testing Components",
-      //     "Testing Hooks",
-      //     "Testing Redux",
-      //   ],
-      // }
+      {
+        UnitName: "Setting up React",
+        Lessons: [
+          "Installing Node.js",
+          "Installing React",
+          "Creating a new React App",
+          "Running the React App",
+        ],
+      },
+      {
+        UnitName: "React Components",
+        Lessons: [
+          "Functional Components",
+          "Class Components",
+          "State",
+          "Props",
+        ],
+      },
+      {
+        UnitName: "React Hooks",
+        Lessons: ["useState", "useEffect", "useContext", "useReducer"],
+      },
+      {
+        UnitName: "React Router",
+        Lessons: [
+          "Installing React Router",
+          "Creating Routes",
+          "Navigating between Routes",
+          "Passing Props",
+        ],
+      },
+      {
+        UnitName: "React Redux",
+        Lessons: [
+          "Installing Redux",
+          "Creating a Store",
+          "Creating Reducers",
+          "Creating Actions",
+        ],
+      },
+      {
+        UnitName: "React Testing",
+        Lessons: [
+          "Installing Jest",
+          "Testing Components",
+          "Testing Hooks",
+          "Testing Redux",
+        ],
+      }
     ],
   },
   {

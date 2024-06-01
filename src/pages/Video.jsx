@@ -10,6 +10,7 @@ const Video = () => {
   const { name } = useParams();
   // const product = categories.find((category) => category.name === name);
   const product = categories[0];
+  const content = product.videoContents;
   return (
     <>
       <div className="bg-slate-700 sm:flex sm:items-center sm:justify-between">
@@ -33,14 +34,30 @@ const Video = () => {
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-3 grid-rows-2">
-        <div className="react-player ">
-          <VideoPlayer product={product} />
+      <div className="flex justify-between">
+        <div className="flex-3">
+          <div className="react-player">
+            <VideoPlayer product={product} />
+          </div>
+          <div>
+            Description
+            <p>Description goes here</p>
+          </div>
         </div>
-        <div className="video-contents">
-          <VideoContents />
+
+        <div className="flex-1">
+          <h3>Contents</h3>
+          {content.map((unit, index) => {
+            return (
+              <div key={index}>
+                <VideoContents
+                  unitName={unit.UnitName}
+                  lessons={unit.Lessons}
+                />
+              </div>
+            );
+          })}
         </div>
-        <div className="video-details"></div>
       </div>
     </>
   );

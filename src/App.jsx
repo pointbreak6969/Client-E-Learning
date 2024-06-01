@@ -24,8 +24,7 @@ function App() {
     //   </Routes>
     // </BrowserRouter>
     // <TestNavbar/>
-    // <Video/>
-    <VideoContents/>
+    <Video/>
   );
 }
 
