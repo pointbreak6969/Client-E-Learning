@@ -1,25 +1,11 @@
 import React, { useState } from "react";
-
-import ReactPlayer from "react-player";
+import "../styles/videoPage.css"
 const VideoPlayer = ({ product }) => {
-  const [playbackRate, setPlaybackRate] = useState(1);
-  const increasePlaybackRate = () => {
-    setPlaybackRate((prevRate) => prevRate + 0.25);
-  };
-
-  const decreasePlaybackRate = () => {
-    setPlaybackRate((prevRate) => (prevRate > 0.25 ? prevRate - 0.25 : 0.25));
-  };
   return (
     <>
-      <ReactPlayer
-       width='100%'
-       height='100%'
-        url={product.video}
-        playing={false}
-        controls={true}
-        // playbackRate={playbackRate}
-      />
+      <video controls className="object-contain h-full w-full">
+        <source  src={product.video} type="video/mp4"/>
+      </video>
     </>
   );
 };
