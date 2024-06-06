@@ -10,6 +10,11 @@ export default {
         2: "2 2 0%",
         3: "3 3 0%",
       },
+    marginTop: {
+      '15': '3.75rem',
+      '96': '24rem',
+      '128': '32rem',
+    },
     },
   },
   plugins: [],

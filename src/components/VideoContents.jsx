@@ -7,11 +7,11 @@ const VideoContents = ({ unitName, lessons }) => {
   // const data = categories[0].videoContents;
   return (
     <>
-      <div className="bg-gray-300">
+      <div className="video-unit-container">
         <div>
           <div className="video-units">
             <div
-              className="text-xl font-bold cursor-pointer flex justify-between w-full video-unit-name"
+              className="text-xl  font-normal cursor-pointer flex justify-between w-full video-unit-name"
               onClick={() => {
                 setIsDropdownOpen(!isDropdownOpen);
               }}

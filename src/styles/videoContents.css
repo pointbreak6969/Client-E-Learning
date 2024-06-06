@@ -1,6 +1,11 @@
+.video-unit-container{
+    background-color: #F7F9FA;
+}
 .video-units{
     position: relative;
+    padding: 1rem 0;
+    border-top: 1px solid #e0d9d9;
 }
 .video-units .video-unit-name{
-    padding: 0 5%;
+    padding: 0 2%;
 }

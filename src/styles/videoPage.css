@@ -7,3 +7,12 @@
     height: auto;
 }
 }
+.sub-nav{
+    border-bottom: 1px solid #858484;
+}
+
+.sub-nav > div{
+    padding: 1rem ;
+    font-size: 1.25rem;
+    cursor: pointer;
+}

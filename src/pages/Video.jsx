@@ -4,11 +4,14 @@ import { useParams } from "react-router-dom";
 import VideoPlayer from "../components/VideoPlayer";
 import { FaShare } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa";
+import { IoMdSearch } from "react-icons/io";
 import "../styles/videoPage.css";
 import VideoContents from "../components/VideoContents";
+import { useState } from "react";
 const Video = () => {
   const { name } = useParams();
   // const product = categories.find((category) => category.name === name);
+  const [activeSection, setActiveSection] = useState("CourseContent");
   const product = categories[0];
   const content = product.videoContents;
   return (
@@ -40,18 +43,35 @@ const Video = () => {
           <VideoPlayer product={product} />
         </div>
         <div className="mx-auto max-w-7xl">
-          <div className="">
-            <h3>Contents</h3>
-            {content.map((unit, index) => {
-              return (
-                <div key={index}>
-                  <VideoContents
-                    unitName={unit.UnitName}
-                    lessons={unit.Lessons}
-                  />
-                </div>
-              );
-            })}
+          <div className=" flex items-center font-serif sub-nav">
+            <div onClick={() => setActiveSection("SearchContent")}>
+              <IoMdSearch className="text-2xl" />
+            </div>
+            <div onClick={() => setActiveSection("CourseContent")}>
+              <h3>Course Contents</h3>
+            </div>
+            <div onClick={() => setActiveSection("Overview")}>
+              <h3>Overview</h3>
+            </div>
+            <div onClick={()=> setActiveSection("Notes")}>
+              <h3>Notes</h3>
+            </div>
+            <div onClick={()=> setActiveSection("Review")}>
+              <h3>Review</h3>
+            </div>
+          </div>
+          <div className="mt-10 mx-auto max-w-4xl">
+            {activeSection === "CourseContent" &&
+              content.map((unit, index) => {
+                return (
+                  <div key={index}>
+                    <VideoContents
+                      unitName={unit.UnitName}
+                      lessons={unit.Lessons}
+                    />
+                  </div>
+                );
+              })}
           </div>
         </div>
       </div>
