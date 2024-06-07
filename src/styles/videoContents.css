@@ -1,11 +1,13 @@
-.video-unit-container{
-    background-color: #F7F9FA;
-}
 .video-units{
+    background-color: #F7F9FA;
     position: relative;
     padding: 1rem 0;
     border-top: 1px solid #e0d9d9;
-}
-.video-units .video-unit-name{
+    }
+    .video-units .video-unit-name{
     padding: 0 2%;
+}
+
+.video-lessons > div{
+    padding: 1% 2%;
 }

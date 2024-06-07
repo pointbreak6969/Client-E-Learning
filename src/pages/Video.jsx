@@ -8,6 +8,7 @@ import { IoMdSearch } from "react-icons/io";
 import "../styles/videoPage.css";
 import VideoContents from "../components/VideoContents";
 import { useState } from "react";
+import SearchBox from "../components/SearchBox";
 const Video = () => {
   const { name } = useParams();
   // const product = categories.find((category) => category.name === name);
@@ -61,6 +62,7 @@ const Video = () => {
             </div>
           </div>
           <div className="mt-10 mx-auto max-w-4xl">
+            {activeSection === "SearchContent" && <SearchBox />}
             {activeSection === "CourseContent" &&
               content.map((unit, index) => {
                 return (
@@ -72,6 +74,7 @@ const Video = () => {
                   </div>
                 );
               })}
+            
           </div>
         </div>
       </div>
