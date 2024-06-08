@@ -9,6 +9,7 @@ import "../styles/videoPage.css";
 import VideoContents from "../components/VideoContents";
 import { useState } from "react";
 import SearchBox from "../components/SearchBox";
+import Footer from "../components/Footer";
 const Video = () => {
   const { name } = useParams();
   // const product = categories.find((category) => category.name === name);
@@ -61,7 +62,7 @@ const Video = () => {
               <h3>Review</h3>
             </div>
           </div>
-          <div className="mt-10 mx-auto max-w-4xl">
+          <div className="mt-10 mx-auto max-w-4xl px-5 xl:px-0">
             {activeSection === "SearchContent" && <SearchBox />}
             {activeSection === "CourseContent" &&
               content.map((unit, index) => {
@@ -78,6 +79,7 @@ const Video = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };
