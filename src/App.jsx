@@ -11,6 +11,7 @@ import Video from "./pages/Video.jsx";
 import Navbar from "./components/Navbar";
 import VideoContents from "./components/VideoContents.jsx";
 import Footer from "./components/Footer.jsx";
+import Notes from "./components/Notes.jsx";
 function App() {
   return (
     // <BrowserRouter>
@@ -25,7 +26,8 @@ function App() {
     //   </Routes>
     // </BrowserRouter>
     // <TestNavbar/>
-    <Video/>
+    // <Video/>
+    <Notes/>
     // <Footer/>
   );
 }
