@@ -10,6 +10,7 @@ import VideoContents from "../components/VideoContents";
 import { useState } from "react";
 import SearchBox from "../components/SearchBox";
 import Footer from "../components/Footer";
+import Notes from "../components/Notes";
 const Video = () => {
   const { name } = useParams();
   // const product = categories.find((category) => category.name === name);
@@ -75,7 +76,7 @@ const Video = () => {
                   </div>
                 );
               })}
-            
+            {activeSection  === "Notes" && <Notes/> }
           </div>
         </div>
       </div>

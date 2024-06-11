@@ -3,8 +3,7 @@ import image2 from "../assets/instructor2.png";
 import image3 from "../assets/instructor3.png";
 import image4 from "../assets/instructor4.png";
 import { Link, useNavigate } from "react-router-dom";
-import "../styles/becomeInstructor.css"
-
+import "../styles/becomeInstructor.css";
 
 const BecomeAInstructor = () => {
     const navigate = useNavigate();
