@@ -14,7 +14,7 @@ const Notes = () => {
     setNotes(""); // Clear the notes input field
     setActiveNoteSection((prevState) => !prevState); // Toggle the activeNoteSection state
   };
-  console.log(activeNoteSection)
+console.log(savedNotes)
 
   return (
     <>
@@ -36,22 +36,46 @@ const Notes = () => {
                   setNotes(e.target.value);
                 }}
               />
-              <FaCirclePlus className={activeNoteSection ? "hidden" : "block"} />
+              <FaCirclePlus
+                className={activeNoteSection ? "hidden" : "block"}
+              />
             </div>
-            <div className="flex mt-3 items-center justify-end gap-2 ">
+            <div
+              className={
+                activeNoteSection
+                  ? "flex mt-3 items-center justify-end gap-2 "
+                  : "hidden"
+              }
+            >
+              <Button
+                name={"Cancel"}
+                fcn={handleCancel}
+                color={"bg-gray-200"}
+                textColor={"text-black"}
+                border={"border-0"}
+                type={"button"}
+              />
+
               <Button
                 name={"Save"}
-                fcn={"submit"}
+                type={"submit"}
                 color={"bg-black"}
                 textColor={"text-white"}
                 border={"border-0"}
               />
             </div>
           </form>
-          <div></div>
+          <div>
+            {savedNotes.map((note, index) => {
+              return (
+                <div key={index} className="border-1 border-black p-2 mt-2">
+                  {note}
+                </div>
+              );
+            })}
+          </div>
         </div>
-        <div>
-        </div>
+        <div></div>
       </div>
     </>
   );
