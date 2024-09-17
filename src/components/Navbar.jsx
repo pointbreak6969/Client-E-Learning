@@ -169,6 +169,7 @@ const Navbar = () => {
               <div className="item">Software and IT</div>
               <div className="item">Design</div>
               <div className="item">Marketing</div>
+              <div className="item">Marketing</div>
             </div>
           </div>
         </div>
