@@ -22,6 +22,7 @@ const Navbar = () => {
   const handelSearchIcon = () => {
     inputRef.current.focus();
   };
+  //just a test
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const ref = useClickAway(() => {
     setToggleSidebar(false);
