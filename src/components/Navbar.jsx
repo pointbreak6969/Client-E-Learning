@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import logo from "../assets/Logo.png";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdOutlineSearch } from "react-icons/md";
@@ -26,6 +26,17 @@ const Navbar = () => {
   const ref = useClickAway(() => {
     setToggleSidebar(false);
   });
+   useEffect(() => {
+    if (toggleSidebar) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [toggleSidebar]);
+
 
   return (
     <>
