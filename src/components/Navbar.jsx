@@ -17,6 +17,7 @@ const categories = [
   "Marketing",
 ];
 const Navbar = () => {
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const inputRef = useRef();
   const handelSearchIcon = () => {
@@ -27,7 +28,7 @@ const Navbar = () => {
   const ref = useClickAway(() => {
     setToggleSidebar(false);
   });
-   useEffect(() => {
+  useEffect(() => {
     if (toggleSidebar) {
       document.body.style.overflow = "hidden";
     } else {
@@ -37,7 +38,6 @@ const Navbar = () => {
       document.body.style.overflow = "auto";
     };
   }, [toggleSidebar]);
-
 
   return (
     <>
@@ -65,11 +65,9 @@ const Navbar = () => {
               <div className="row-span-1  border-b-2 mobile-categories-top grid pb-2 ">
                 <div className="text-lg text-blue-800">
                   <Link to={"/login"}>Login</Link>
-                
                 </div>
                 <div className="text-lg text-blue-800">
                   <Link to={"/register"}>Signup</Link>
-                
                 </div>
               </div>
               <div className="row-span-7 mt-5 mobile-categories-center border-b-2 ">
@@ -114,7 +112,12 @@ const Navbar = () => {
                       <p className="text-xl"> &gt; </p>
                     </div>
                   </div>
-                  <div className="grid grid-cols-4 items-center">
+                  <div
+                    className="grid grid-cols-4 items-center"
+                    onClick={() => {
+                      navigate("/becomeInstructor");
+                    }}
+                  >
                     <p className="text-lg col-span-3 hover:cursor-pointer hover:text-blue-700">
                       Become A Instructor
                     </p>
@@ -142,7 +145,14 @@ const Navbar = () => {
           </div>
         </div>
         <div>
-          <img src={logo} alt="" className="w-20" />
+          <img
+            src={logo}
+            alt=""
+            className="w-20"
+            onClick={() => {
+              navigate("/");
+            }}
+          />
         </div>
         <div className="flex">
           <div className="pr-2">
@@ -156,14 +166,26 @@ const Navbar = () => {
       <div className="hidden md:grid md:grid-cols-12 px-5 py-3 items-center">
         <div className="md:col-span-3 md:grid md:grid-cols-2 md:items-center md:justify-items-center xl:grid-cols-3">
           <div>
-            <img src={logo} alt="" className="w-20 cursor-pointer" />
+            <img
+              src={logo}
+              alt=""
+              className="w-20 cursor-pointer"
+              onClick={() => {
+                navigate("/");
+              }}
+            />
           </div>
-          <div className="hidden xl:block">
+          <div
+            className="hidden xl:block"
+            onClick={() => {
+              navigate("/about");
+            }}
+          >
             <p className="text-lg cursor-pointer">About Us</p>
           </div>
           <div className="category w-full h-full inline-flex items-center">
             <p className="text-lg cursor-pointer">Categories</p>
-            <div className=" hidden shadow-xl p-2 w-72 dropdown">
+            <div className="hidden shadow-xl p-2 w-64 dropdown rounded-xl ">
               <div className="item">Development</div>
               <div className="item">Business</div>
               <div className="item">Finance</div>
@@ -194,13 +216,28 @@ const Navbar = () => {
           <div className="hidden xl:block cursor-pointer">
             <p className="text-lg">Business</p>
           </div>
-          <div className="hidden lg:block cursor-pointer">
+          <div
+            className="hidden lg:block cursor-pointer"
+            onClick={() => {
+              navigate("/becomeInstructor");
+            }}
+          >
             <p className="text-lg">Teacher</p>
           </div>
-          <div className="border-2 px-3 py-1 border-slate-500 hover:bg-gray-200 cursor-pointer">
+          <div
+            className="border-2 px-3 py-1 border-slate-500 hover:bg-gray-200 cursor-pointer"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
             <p className="text-lg">Login</p>
           </div>
-          <div className="bg-black px-3 py-1 text-white cursor-pointer">
+          <div
+            className="bg-black px-3 py-1.5 text-white cursor-pointer "
+            onClick={() => {
+              navigate("/register");
+            }}
+          >
             <p className="text-lg">Signup</p>
           </div>
         </div>

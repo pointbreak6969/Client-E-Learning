@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import "../styles/about.css";
 import about from "../assets/about.png";
 import about1 from "../assets/about1.png";
-
+import Footer from "../components/Footer";
 function About() {
   return (
     <div>

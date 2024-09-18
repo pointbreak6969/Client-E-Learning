@@ -6,7 +6,7 @@ import { BrowserRouter,Routes,  Route } from "react-router-dom";
 import About from "./pages/About";
 import SearchCourse from "./components/SearchCourse";
 import BecomeAInstructor from "./pages/BecomeAInstructor";
-import TestNavbar from "./components/Navbar.jsx";
+import SearchBox from "./components/SearchBox.jsx";
 
 function App() {
   return (
@@ -18,6 +18,7 @@ function App() {
         <Route path="/about" Component={About} />
         <Route path="/search" Component={SearchCourse} />
         <Route path="/becomeInstructor" Component={BecomeAInstructor} />
+        <Route path="/searchBox" Component={SearchBox}/>
       </Routes>
     </BrowserRouter>
   );

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { categories } from "../utlis/list";
 import VideoContents from "./VideoContents";
+import { useDebounce } from "@uidotdev/usehooks";
 const SearchBox = () => {
   const [searchCourseContent, setSearchCourseContent] = useState("");
   const product = categories[0];
@@ -18,6 +19,7 @@ const SearchBox = () => {
     }
     return null;
   });
+  const debouncedSearchItem = useDebounce(filterItem, 500)
   return (
     <>
       <div className="flex flex-col gap-10">
@@ -39,7 +41,7 @@ const SearchBox = () => {
             <h4 className="text-xl">To find lectures, resources, notes</h4>
           </div>
         ) : (
-          filterItem?.map((unit, index) => {
+          debouncedSearchItem?.map((unit, index) => {
             return (
               <div key={index}>
                 <VideoContents

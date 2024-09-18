@@ -88,7 +88,3 @@ const CoursesComponent = () => {
 };
 
 export default CoursesComponent;
-
-};
-
-export default CoursesComponent;
