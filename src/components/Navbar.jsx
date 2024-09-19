@@ -8,6 +8,8 @@ import { IoMdClose } from "react-icons/io";
 import useClickAway from "../utlis/useClickAway";
 import "../styles/navbar.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setSearchQuery } from "../redux/searchSlice";
 const categories = [
   "Development",
   "Business",
@@ -18,12 +20,10 @@ const categories = [
 ];
 const Navbar = () => {
   const navigate = useNavigate();
-  const [search, setSearch] = useState("");
   const inputRef = useRef();
   const handelSearchIcon = () => {
     inputRef.current.focus();
   };
-  //just a test
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const ref = useClickAway(() => {
     setToggleSidebar(false);
@@ -38,7 +38,8 @@ const Navbar = () => {
       document.body.style.overflow = "auto";
     };
   }, [toggleSidebar]);
-
+  const searchQuery = useSelector((state)=> state.search.searchQuery)
+  const dispatch = useDispatch()
   return (
     <>
       <div
@@ -196,16 +197,19 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <div className="md:col-span-6 md:flex md:justify-center md:items-center md:gap-5 md:border-2 md:rounded-3xl ">
+        <div className="md:col-span-6 md:flex md:justify-center md:items-center md:gap-5 md:border-2 md:rounded-3xl "
+        onClick={()=>{
+          navigate("/search")
+        }}>
           <IoIosSearch
             className="text-3xl  ml-5 opacity-50 cursor-pointer"
             onClick={handelSearchIcon}
           />
           <input
             type="text"
-            value={search}
+            value={searchQuery}
             onChange={(e) => {
-              setSearch(e.target.value);
+              dispatch(setSearchQuery(e.target.value));
             }}
             ref={inputRef}
             placeholder="Search for Courses"
@@ -214,7 +218,7 @@ const Navbar = () => {
         </div>
         <div className="md:col-span-3 md:grid md:grid-cols-2   md:items-center md:justify-items-center lg:grid-cols-3 xl:grid-cols-4 ">
           <div className="hidden xl:block cursor-pointer">
-            <p className="text-lg">Business</p>
+            <p className="text-lg">Assignments</p>
           </div>
           <div
             className="hidden lg:block cursor-pointer"
