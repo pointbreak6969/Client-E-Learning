@@ -1,6 +1,6 @@
 import Navbar from "./Navbar";
 import { categories } from "../utlis/list";
-import { useDebounce } from "@uidotdev/usehooks";
+import useDebounce from "../utlis/useDebounce";
 import { useSelector } from "react-redux";
 import Course from "./Course";
 const SearchCourse = () => {

@@ -12,7 +12,7 @@ const BecomeAInstructor = () => {
         <div className="become-instructor-header">
           <div className="become-instructor-header-title">
             {" "}
-            <h4
+            <h4 className="text-xl"
               onClick={() => {
                 navigate("/");
               }}

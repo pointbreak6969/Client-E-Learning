@@ -7,6 +7,7 @@ import About from "./pages/About";
 import SearchCourse from "./components/SearchCourse";
 import BecomeAInstructor from "./pages/BecomeAInstructor";
 import SearchBox from "./components/SearchBox.jsx";
+import Video from "./pages/Video.jsx";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/search" Component={SearchCourse} />
         <Route path="/becomeInstructor" Component={BecomeAInstructor} />
         <Route path="/searchBox" Component={SearchBox}/>
+        <Route path="/video" Component={Video}/>
       </Routes>
     </BrowserRouter>
   );

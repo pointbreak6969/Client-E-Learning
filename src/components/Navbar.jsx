@@ -11,12 +11,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchQuery } from "../redux/searchSlice";
 const categories = [
-  "Development",
-  "Business",
-  "Finance",
-  "Software and IT",
-  "Design",
-  "Marketing",
+  { name: "Development", link: "/development" },
+  { name: "Business", link: "/business" },
+  { name: "Finance", link: "/finance" },
+  { name: "Software and IT", link: "/software" },
+  { name: "Design", link: "/design" },
+  { name: "Marketing", link: "/marketing" },
 ];
 const Navbar = () => {
   const navigate = useNavigate();
@@ -25,6 +25,7 @@ const Navbar = () => {
     inputRef.current.focus();
   };
   const [toggleSidebar, setToggleSidebar] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const ref = useClickAway(() => {
     setToggleSidebar(false);
   });
@@ -38,14 +39,14 @@ const Navbar = () => {
       document.body.style.overflow = "auto";
     };
   }, [toggleSidebar]);
-  const searchQuery = useSelector((state)=> state.search.searchQuery)
-  const dispatch = useDispatch()
+  const searchQuery = useSelector((state) => state.search.searchQuery);
+  const dispatch = useDispatch();
   return (
     <>
       <div
         className={
           toggleSidebar
-            ? "flex flex-nowrap justify-between p-3 shadow-md items-center md:hidden bg-gray-200"
+            ? "flex flex-nowrap justify-between p-3 shadow-md items-center md:hidden bg-gray-200 relative z-50"
             : "flex flex-nowrap justify-between p-3 shadow-md items-center md:hidden"
         }
       >
@@ -80,10 +81,12 @@ const Navbar = () => {
                         key={index}
                         className="grid grid-cols-4 items-center  hover:cursor-pointer hover:text-blue-700"
                       >
-                        <div className="col-span-3 text-xl font-sans">
-                          {" "}
-                          {category}
-                        </div>
+                        <Link
+                          to={category.link}
+                          className="col-span-3 text-xl font-sans"
+                        >
+                          {category.name}
+                        </Link>
                         <div className="col-span-1 flex justify-end">
                           <p className="text-xl"> &gt; </p>
                         </div>
@@ -92,7 +95,7 @@ const Navbar = () => {
                   })}
                 </div>
               </div>
-              <div className="row-span-2 mobile-categories-end mt-5">
+              <div className="row-span-2 mobile-categories-end mt-5 ">
                 <h3 className="text-xl font-sans opactiy-80">
                   More From Himalayan Sikshya
                 </h3>
@@ -166,41 +169,46 @@ const Navbar = () => {
       </div>
       <div className="hidden md:grid md:grid-cols-12 px-5 py-3 items-center">
         <div className="md:col-span-3 md:grid md:grid-cols-2 md:items-center md:justify-items-center xl:grid-cols-3">
-          <div>
-            <img
-              src={logo}
-              alt=""
-              className="w-20 cursor-pointer"
-              onClick={() => {
-                navigate("/");
-              }}
-            />
-          </div>
-          <div
-            className="hidden xl:block"
-            onClick={() => {
-              navigate("/about");
-            }}
-          >
-            <p className="text-lg cursor-pointer">About Us</p>
+          <Link to={"/"}>
+            <img src={logo} alt="" className="w-20 c    ursor-pointer" />
+          </Link>
+          <div className="hidden xl:block">
+            <Link to={"/about"} className="text-lg cursor-pointer">
+              About Us
+            </Link>
           </div>
           <div className="category w-full h-full inline-flex items-center">
-            <p className="text-lg cursor-pointer">Categories</p>
-            <div className="hidden shadow-xl p-2 w-64 dropdown rounded-xl ">
-              <div className="item">Development</div>
-              <div className="item">Business</div>
-              <div className="item">Finance</div>
-              <div className="item">Software and IT</div>
-              <div className="item">Design</div>
-              <div className="item">Marketing</div>
-              <div className="item">Marketing</div>
+            <button
+              className="text-lg cursor-pointer"
+              onClick={() => {
+                setIsDropdownOpen(!isDropdownOpen);
+              }}
+            >
+              Categories
+            </button>
+            <div
+              className={
+                isDropdownOpen
+                  ? "shadow-xl p-2 w-64 dropdown rounded-xl "
+                  : "hidden shadow-xl p-2 w-64 dropdown rounded-xl "
+              }
+            >
+              {categories.map((category, index) => {
+                return (
+                  <div key={index} className="item">
+                    <Link to={category.link}>{category.name}</Link>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
-        <div className="md:col-span-6 md:flex md:justify-center md:items-center md:gap-5 md:border-2 md:rounded-3xl "
-        onClick={()=>{
-          navigate("/search")
-        }}>
+        <div
+          className="md:col-span-6 md:flex md:justify-center md:items-center md:gap-5 md:border-2 md:rounded-3xl "
+          onClick={() => {
+            navigate("/search");
+          }}
+        >
           <IoIosSearch
             className="text-3xl  ml-5 opacity-50 cursor-pointer"
             onClick={handelSearchIcon}
@@ -218,7 +226,7 @@ const Navbar = () => {
         </div>
         <div className="md:col-span-3 md:grid md:grid-cols-2   md:items-center md:justify-items-center lg:grid-cols-3 xl:grid-cols-4 ">
           <div className="hidden xl:block cursor-pointer">
-            <p className="text-lg">Assignments</p>
+            <Link to={"/assignments"} className="text-lg">Assignments</Link>
           </div>
           <div
             className="hidden lg:block cursor-pointer"
@@ -226,7 +234,7 @@ const Navbar = () => {
               navigate("/becomeInstructor");
             }}
           >
-            <p className="text-lg">Teacher</p>
+            <Link to={"/becomeInstructor"} className="text-lg">Teacher</Link>
           </div>
           <div
             className="border-2 px-3 py-1 border-slate-500 hover:bg-gray-200 cursor-pointer"
