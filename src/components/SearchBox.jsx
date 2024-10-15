@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { categories } from "../utlis/list";
 import VideoContents from "./VideoContents";
-import { useDebounce } from "@uidotdev/usehooks";
+import useDebounce from "../utlis/useDebounce";
 const SearchBox = () => {
   const [searchCourseContent, setSearchCourseContent] = useState("");
   const product = categories[0];
