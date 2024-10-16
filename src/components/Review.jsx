@@ -2,58 +2,66 @@ import React, { act, useState } from "react";
 import { FaCirclePlus } from "react-icons/fa6";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { Button } from "./Buttons";
-const Notes = () => {
-  const [notes, setNotes] = useState("");
-  const [savedNotes, setSavedNotes] = useState([]);
-  const [activeNoteSection, setActiveNoteSection] = useState(false);
+
+const Review = () => {
+  const [review, setReview] = useState("");
+  const [savedReviews, setSavedReviews] = useState([]);
+  const [activeReviewSection, setActiveReviewSection] = useState(false);
   const [errorMessage, setErrorMesasge] = useState("");
-  const handelNotes = (e) => {
-    if (!notes) {
+
+  const handleReview = (e) => {
+    if (review.length === 0) {
       e.preventDefault();
-      setErrorMesasge("Please enter your note here");
+      setErrorMesasge("Enter your review here");
     } else {
       e.preventDefault();
-      setSavedNotes([...savedNotes, notes]);
-      setNotes("");
-      setActiveNoteSection(false);
+      setSavedReviews([...savedReviews, review]);
+      setReview("");
+      setActiveReviewSection(false);
       setErrorMesasge("");
     }
   };
+
   const handleCancel = () => {
-    setNotes(""); // Clear the notes input field
-    setActiveNoteSection(false); // Toggle the activeNoteSection state
+    setErrorMesasge("");
+    setReview(""); // Clear the review input field
+    setActiveReviewSection(false); // Toggle the activeReviewSection state
   };
 
   return (
     <>
       <div>
         <div>
-          <form action="" onSubmit={handelNotes}>
+          <form action="" onSubmit={handleReview}>
             <div
               className="flex justify-between p-2 items-center border-1 border-black"
               onClick={() => {
-                setActiveNoteSection(true);
+                setActiveReviewSection(true);
               }}
             >
               <input
                 className="w-full focus:outline-none"
                 type="text"
-                placeholder="Create a new note"
-                value={notes}
+                placeholder="Review the course"
+                value={review}
                 onChange={(e) => {
-                  setNotes(e.target.value);
+                  setReview(e.target.value);
                 }}
-            aria-describedby="noteError"
-            aria-invalid= {errorMessage ? true : false}
+                aria-describedby="reviewError"
+                aria-invalid={errorMessage ? true : false}
               />
               <FaCirclePlus
-                className={activeNoteSection ? "hidden" : "block"}
-                />
+                className={activeReviewSection ? "hidden" : "block"}
+              />
             </div>
-                {errorMessage && <div id="noteError" style={{ color: 'red' }}>{errorMessage}</div>}
+            {errorMessage && (
+              <div id="reviewError" style={{ color: "red" }}>
+                {errorMessage}
+              </div>
+            )}
             <div
               className={
-                activeNoteSection
+                activeReviewSection
                   ? "flex mt-3 items-center justify-end gap-2 "
                   : "hidden"
               }
@@ -76,7 +84,7 @@ const Notes = () => {
             </div>
           </form>
           <div className="mt-3">
-            {savedNotes.map((note, index) => {
+            {savedReviews.map((review, index) => {
               return (
                 <div key={index}>
                   <div className="flex justify-end gap-4">
@@ -87,15 +95,15 @@ const Notes = () => {
                       <MdDelete
                         className="text-3xl cursor-pointer"
                         onClick={() => {
-                          const updatedNotes = [...savedNotes];
-                          updatedNotes.splice(index, 1);
-                          setSavedNotes(updatedNotes);
+                          const updatedReviews = [...savedReviews];
+                          updatedReviews.splice(index, 1);
+                          setSavedReviews(updatedReviews);
                         }}
                       />
                     </div>
                   </div>
                   <div key={index} className="bg-slate-100 p-4">
-                    {note}
+                    {review}
                   </div>
                 </div>
               );
@@ -108,4 +116,4 @@ const Notes = () => {
   );
 };
 
-export default Notes;
+export default Review;

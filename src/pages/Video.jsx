@@ -10,11 +10,23 @@ import VideoContents from "../components/VideoContents";
 import { useState } from "react";
 import SearchBox from "../components/SearchBox";
 import Footer from "../components/Footer";
-import Notes from "../components/Notes";
+import Review from "../components/Review";
+import Rte from "../components/Rte";
+import { useForm } from "react-hook-form";
 const Video = () => {
-  const { name } = useParams();
-  // const product = categories.find((category) => category.name === name);
+  const { control, getValues } = useForm({
+    defaultValues: {
+      content: "",
+    },
+  });
   const [activeSection, setActiveSection] = useState("CourseContent");
+  const sections = [
+    { id: "SearchContent", content: <IoMdSearch className="text-2xl" /> },
+    { id: "CourseContent", content: <h3>Course Contents</h3> },
+    { id: "Overview", content: <h3>Overview</h3> },
+    { id: "Notes", content: <h3>Notes</h3> },
+    { id: "Review", content: <h3>Review</h3> },
+  ];
   const product = categories[0];
   const content = product.videoContents;
   return (
@@ -46,22 +58,15 @@ const Video = () => {
           <VideoPlayer product={product} />
         </div>
         <div className="mx-auto max-w-7xl">
-          <div className=" flex items-center font-serif sub-nav">
-            <div onClick={() => setActiveSection("SearchContent")}>
-              <IoMdSearch className="text-2xl" />
-            </div>
-            <div onClick={() => setActiveSection("CourseContent")}>
-              <h3>Course Contents</h3>
-            </div>
-            <div onClick={() => setActiveSection("Overview")}>
-              <h3>Overview</h3>
-            </div>
-            <div onClick={()=> setActiveSection("Notes")}>
-              <h3>Notes</h3>
-            </div>
-            <div onClick={()=> setActiveSection("Review")}>
-              <h3>Review</h3>
-            </div>
+          <div className="flex items-center font-serif sub-nav">
+            {sections.map((section) => (
+              <div
+                key={section.id}
+                onClick={() => setActiveSection(section.id)}
+              >
+                {section.content}
+              </div>
+            ))}
           </div>
           <div className="mt-10 mx-auto max-w-4xl px-5 xl:px-0">
             {activeSection === "SearchContent" && <SearchBox />}
@@ -76,11 +81,18 @@ const Video = () => {
                   </div>
                 );
               })}
-            {activeSection  === "Notes" && <Notes/> }
+            {activeSection === "Notes" && (
+              <Rte
+                name="Content"
+                control={control}
+                defaultValue={getValues("content")}
+              />
+            )}
+            {activeSection === "Review" && <Review />}
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
