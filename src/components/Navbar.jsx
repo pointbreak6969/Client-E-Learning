@@ -10,6 +10,7 @@ import "../styles/navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchQuery } from "../redux/searchSlice";
+import { Button } from "./Buttons";
 const categories = [
   { name: "Development", link: "/development" },
   { name: "Business", link: "/business" },
@@ -25,7 +26,6 @@ const Navbar = () => {
     inputRef.current.focus();
   };
   const [toggleSidebar, setToggleSidebar] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const ref = useClickAway(() => {
     setToggleSidebar(false);
   });
@@ -178,21 +178,8 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="category w-full h-full inline-flex items-center">
-            <button
-              className="text-lg cursor-pointer"
-              onClick={() => {
-                setIsDropdownOpen(!isDropdownOpen);
-              }}
-            >
-              Categories
-            </button>
-            <div
-              className={
-                isDropdownOpen
-                  ? "shadow-xl p-2 w-64 dropdown rounded-xl "
-                  : "hidden shadow-xl p-2 w-64 dropdown rounded-xl "
-              }
-            >
+            <button className="text-lg cursor-pointer">Categories</button>
+            <div className="hidden shadow-xl p-2 w-64 dropdown rounded-xl ">
               {categories.map((category, index) => {
                 return (
                   <div key={index} className="item">
@@ -226,7 +213,9 @@ const Navbar = () => {
         </div>
         <div className="md:col-span-3 md:grid md:grid-cols-2   md:items-center md:justify-items-center lg:grid-cols-3 xl:grid-cols-4 ">
           <div className="hidden xl:block cursor-pointer">
-            <Link to={"/assignments"} className="text-lg">Assignments</Link>
+            <Link to={"/assignments"} className="text-lg">
+              Assignments
+            </Link>
           </div>
           <div
             className="hidden lg:block cursor-pointer"
@@ -234,23 +223,29 @@ const Navbar = () => {
               navigate("/becomeInstructor");
             }}
           >
-            <Link to={"/becomeInstructor"} className="text-lg">Teacher</Link>
+            <Link to={"/becomeInstructor"} className="text-lg">
+              Teacher
+            </Link>
           </div>
-          <div
-            className="border-2 px-3 py-1 border-slate-500 hover:bg-gray-200 cursor-pointer"
-            onClick={() => {
-              navigate("/login");
-            }}
-          >
-            <p className="text-lg">Login</p>
+          <div>
+            <Button
+              className="text-lg border-2 border-slate-500 hover:bg-gray-200"
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Login
+            </Button>
           </div>
-          <div
-            className="bg-black px-3 py-1.5 text-white cursor-pointer "
-            onClick={() => {
-              navigate("/register");
-            }}
-          >
-            <p className="text-lg">Signup</p>
+          <div>
+            <Button
+              className="text-lg bg-black py-1.5 text-white"
+              onClick={() => {
+                navigate("/register");
+              }}
+            >
+              Signup
+            </Button>
           </div>
         </div>
       </div>
