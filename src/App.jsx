@@ -8,13 +8,14 @@ import SearchCourse from "./components/SearchCourse";
 import BecomeAInstructor from "./pages/BecomeAInstructor";
 import SearchBox from "./components/SearchBox.jsx";
 import Video from "./pages/Video.jsx";
+import Signup from "./components/Signup.jsx";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" Component={Home} />
-        <Route path= "/register" Component = {Register}/>
+        <Route path= "/register" Component = {Signup}/>
         <Route path="/login" Component={Login} />
         <Route path="/about" Component={About} />
         <Route path="/search" Component={SearchCourse} />
@@ -23,6 +24,8 @@ function App() {
         <Route path="/video" Component={Video}/>
       </Routes>
     </BrowserRouter>
+    
+  
   );
 }
 

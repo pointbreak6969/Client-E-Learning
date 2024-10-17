@@ -19,7 +19,7 @@ const categories = [
   { name: "Design", link: "/design" },
   { name: "Marketing", link: "/marketing" },
 ];
-const Navbar = () => {
+const Navbar = ({className}) => {
   const navigate = useNavigate();
   const inputRef = useRef();
   const handelSearchIcon = () => {
@@ -167,7 +167,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className="hidden md:grid md:grid-cols-12 px-5 py-3 items-center">
+      <div className={`hidden md:grid md:grid-cols-12 px-5 py-3 items-center ${className}`}>
         <div className="md:col-span-3 md:grid md:grid-cols-2 md:items-center md:justify-items-center xl:grid-cols-3">
           <Link to={"/"}>
             <img src={logo} alt="" className="w-20 c    ursor-pointer" />
