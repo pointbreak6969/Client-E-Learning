@@ -66,10 +66,10 @@ const Navbar = ({className}) => {
             <div className="grid grid-rows-10 py-4 px-5 w-full">
               <div className="row-span-1  border-b-2 mobile-categories-top grid pb-2 ">
                 <div className="text-lg text-blue-800">
-                  <Link to={"/login"}>Login</Link>
+                  <Link to={"/authentication/login"}>Login</Link>
                 </div>
                 <div className="text-lg text-blue-800">
-                  <Link to={"/register"}>Signup</Link>
+                  <Link to={"/authentication/register"}>Signup</Link>
                 </div>
               </div>
               <div className="row-span-7 mt-5 mobile-categories-center border-b-2 ">
@@ -231,7 +231,7 @@ const Navbar = ({className}) => {
             <Button
               className="text-lg border-2 border-slate-500 hover:bg-gray-200"
               onClick={() => {
-                navigate("/login");
+                navigate("/authentication/login");
               }}
             >
               Login
@@ -241,7 +241,7 @@ const Navbar = ({className}) => {
             <Button
               className="text-lg bg-black py-1.5 text-white"
               onClick={() => {
-                navigate("/register");
+                navigate("/authentication/register");
               }}
             >
               Signup
