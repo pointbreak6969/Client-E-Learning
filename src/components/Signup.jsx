@@ -28,8 +28,8 @@ const Signup = () => {
       if (createdUser) {
         const currentUser = await authService.getCurrentUser();
         if (currentUser) {
-          console.log(createdUser.data);
-          dispatch(login(createdUser.data));
+          console.log(createdUser.data.user);
+          dispatch(login({user: createdUser.data.user}));
           navigate("/");
         }
       }

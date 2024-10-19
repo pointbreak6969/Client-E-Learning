@@ -20,13 +20,14 @@ export class AuthService {
   }
   async login({ email, password }) {
     try {
-      return await axios.post(
+     const response = await axios.post(
         "http://localhost:5050/api/user/login",
         { email, password },
         {
           withCredentials: true,
         }
       );
+      return response.data;
     } catch (error) {
       console.log("Something went wrong while logging in");
     }

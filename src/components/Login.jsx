@@ -18,11 +18,8 @@ const Login = () => {
     try {
       const session = await authService.login(data);
       if (session) {
-        const userData = await authService.getCurrentUser();
-        if (userData) {
-          dispatch(authLogin(userData));
-          navigate("/");
-        }
+        dispatch(authLogin({user: session.data.user}));
+        navigate("/");
       }
     } catch (e) {
       setError(e.message);
@@ -79,7 +76,10 @@ const Login = () => {
 
       <p className="mt-2 text-sm text-gray-500 text-center">
         Don't have an account??{" "}
-        <Link to={"/authentication/register"} className="text-blue-600 underline">
+        <Link
+          to={"/authentication/register"}
+          className="text-blue-600 underline"
+        >
           Signup in here
         </Link>
       </p>
