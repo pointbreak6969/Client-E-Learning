@@ -17,18 +17,18 @@
   padding: 0.5rem;
 }
 
-.category:hover .dropdown { 
+.category:hover .dropdown {
   display: block;
 }
-.category .dropdown .item {
+.item {
   font-size: 1.25rem;
   font-family: "Roboto", sans-serif;
   opacity: 0.8;
   padding-top: 0.5rem;
   cursor: pointer;
 }
-.category .dropdown .item:hover{
-  color: #00308F;
+.item:hover {
+  color: #00308f;
   transform: scale(1.005);
   transition: all 0.2s ease-in-out;
 }

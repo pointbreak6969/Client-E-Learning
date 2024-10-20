@@ -26,6 +26,7 @@ const Navbar = ({ className }) => {
   const handelSearchIcon = () => {
     inputRef.current.focus();
   };
+  
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const ref = useClickAway(() => {
     setToggleSidebar(false);
@@ -181,22 +182,18 @@ const Navbar = ({ className }) => {
             </Link>
           </div>
           <div className="category w-full h-full inline-flex items-center">
-            {/* <button className="text-lg cursor-pointer">Categories</button>
-            <div className="hidden shadow-xl p-2 w-64 dropdown rounded-xl ">
-              {categories.map((category, index) => {
-                return (
-                  <div key={index} className="item">
-                    <Link to={category.link}>{category.name}</Link>
-                  </div>
-                );
-              })}
-            </div> */}
             <HoverCard>
-              <HoverCardTrigger className="text-lg cursor-pointer">
-                Categories
+              <HoverCardTrigger asChild>
+                <button className="text-lg cursor-pointer"> Categories</button>
               </HoverCardTrigger>
               <HoverCardContent>
-                
+                {categories.map((category, index) => {
+                  return (
+                    <div key={index} className="item">
+                      <button className="focus:outline-none">{category.name}</button>
+                    </div>
+                );
+                })} 
               </HoverCardContent>
             </HoverCard>
           </div>
