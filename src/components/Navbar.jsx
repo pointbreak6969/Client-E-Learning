@@ -11,6 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchQuery } from "../redux/searchSlice";
 import { Button } from "./Buttons";
+import { HoverCard, HoverCardTrigger, HoverCardContent } from "./ui/hover-card";
 const categories = [
   { name: "Development", link: "/development" },
   { name: "Business", link: "/business" },
@@ -19,7 +20,7 @@ const categories = [
   { name: "Design", link: "/design" },
   { name: "Marketing", link: "/marketing" },
 ];
-const Navbar = ({className}) => {
+const Navbar = ({ className }) => {
   const navigate = useNavigate();
   const inputRef = useRef();
   const handelSearchIcon = () => {
@@ -167,7 +168,9 @@ const Navbar = ({className}) => {
           </div>
         </div>
       </div>
-      <div className={`hidden md:grid md:grid-cols-12 px-5 py-3 items-center ${className}`}>
+      <div
+        className={`hidden md:grid md:grid-cols-12 px-5 py-3 items-center ${className}`}
+      >
         <div className="md:col-span-3 md:grid md:grid-cols-2 md:items-center md:justify-items-center xl:grid-cols-3">
           <Link to={"/"}>
             <img src={logo} alt="" className="w-20 c    ursor-pointer" />
@@ -178,7 +181,7 @@ const Navbar = ({className}) => {
             </Link>
           </div>
           <div className="category w-full h-full inline-flex items-center">
-            <button className="text-lg cursor-pointer">Categories</button>
+            {/* <button className="text-lg cursor-pointer">Categories</button>
             <div className="hidden shadow-xl p-2 w-64 dropdown rounded-xl ">
               {categories.map((category, index) => {
                 return (
@@ -187,7 +190,15 @@ const Navbar = ({className}) => {
                   </div>
                 );
               })}
-            </div>
+            </div> */}
+            <HoverCard>
+              <HoverCardTrigger className="text-lg cursor-pointer">
+                Categories
+              </HoverCardTrigger>
+              <HoverCardContent>
+                
+              </HoverCardContent>
+            </HoverCard>
           </div>
         </div>
         <div
