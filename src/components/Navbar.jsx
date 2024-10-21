@@ -232,11 +232,6 @@ const Navbar = ({ className }) => {
           />
         </div>
         <div className="md:col-span-3 md:grid md:grid-cols-2   md:items-center md:justify-items-center lg:grid-cols-3 xl:grid-cols-4 ">
-          <div className="hidden xl:block cursor-pointer">
-            <Link to={"/assignments"} className="text-lg">
-              Assignments
-            </Link>
-          </div>
           <div
             className="hidden lg:block cursor-pointer"
             onClick={() => {
