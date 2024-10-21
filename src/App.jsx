@@ -26,6 +26,7 @@ function App() {
         <Route path="/video" Component={Video} />
       </Routes>
     </BrowserRouter>
+  
   );
 }
 

@@ -1,17 +1,25 @@
 import React, { useRef, useState, useEffect } from "react";
 import logo from "../assets/Logo.png";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { MdOutlineSearch } from "react-icons/md";
-import { IoIosSearch } from "react-icons/io";
-import { BsCart3 } from "react-icons/bs";
-import { IoMdClose } from "react-icons/io";
+import {
+  BsCart3,
+  MdOutlineSearch,
+  MdOutlineArrowDropDown,
+  IoMdClose,
+} from "../utlis/reactIcons.js";
+
 import useClickAway from "../utlis/useClickAway";
 import "../styles/navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchQuery } from "../redux/searchSlice";
 import { Button } from "./Buttons";
-import { HoverCard, HoverCardTrigger, HoverCardContent } from "./ui/hover-card";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 const categories = [
   { name: "Development", link: "/development" },
   { name: "Business", link: "/business" },
@@ -26,7 +34,7 @@ const Navbar = ({ className }) => {
   const handelSearchIcon = () => {
     inputRef.current.focus();
   };
-  
+
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const ref = useClickAway(() => {
     setToggleSidebar(false);
@@ -182,20 +190,24 @@ const Navbar = ({ className }) => {
             </Link>
           </div>
           <div className="category w-full h-full inline-flex items-center">
-            <HoverCard>
-              <HoverCardTrigger asChild>
-                <button className="text-lg cursor-pointer"> Categories</button>
-              </HoverCardTrigger>
-              <HoverCardContent>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="text-lg cursor-pointer inline-flex items-center justify-center">
+                  Categories <MdOutlineArrowDropDown />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
                 {categories.map((category, index) => {
                   return (
-                    <div key={index} className="item">
-                      <button className="focus:outline-none">{category.name}</button>
-                    </div>
-                );
-                })} 
-              </HoverCardContent>
-            </HoverCard>
+                    <DropdownMenuItem key={index}>
+                      <Link to={category.link} className="item">
+                        {category.name}
+                      </Link>
+                    </DropdownMenuItem>
+                  );
+                })}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
         <div
@@ -204,7 +216,7 @@ const Navbar = ({ className }) => {
             navigate("/search");
           }}
         >
-          <IoIosSearch
+          <MdOutlineSearch
             className="text-3xl  ml-5 opacity-50 cursor-pointer"
             onClick={handelSearchIcon}
           />
