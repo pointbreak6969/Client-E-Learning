@@ -20,6 +20,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import { SidebarTrigger, SidebarProvider } from "./ui/sidebar";
+import { MobileSidebar } from "./MobileSidebar";
 const categories = [
   { name: "Development", link: "/development" },
   { name: "Business", link: "/business" },
@@ -34,148 +36,33 @@ const Navbar = ({ className }) => {
   const handelSearchIcon = () => {
     inputRef.current.focus();
   };
-
-  const [toggleSidebar, setToggleSidebar] = useState(false);
-  const ref = useClickAway(() => {
-    setToggleSidebar(false);
-  });
-  useEffect(() => {
-    if (toggleSidebar) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [toggleSidebar]);
   const searchQuery = useSelector((state) => state.search.searchQuery);
   const dispatch = useDispatch();
   return (
     <>
-      <div
-        className={
-          toggleSidebar
-            ? "flex flex-nowrap justify-between p-3 shadow-md items-center md:hidden bg-gray-200 relative z-50"
-            : "flex flex-nowrap justify-between p-3 shadow-md items-center md:hidden"
-        }
-      >
+      <div className="flex flex-nowrap justify-between p-3 shadow-md items-center md:hidden">
+        <SidebarProvider>
+          <MobileSidebar />
+          <SidebarTrigger/>
+        </SidebarProvider>
         <div>
-          <RxHamburgerMenu
-            className="text-3xl cursor-pointer"
-            onClick={() => setToggleSidebar(true)}
-          />
-          <div
-            ref={ref}
-            className={
-              toggleSidebar
-                ? "h-screen bg-white transition-all duration-1000 ease-out mobile-categories"
-                : "hidden"
-            }
-          >
-            <div className="grid grid-rows-10 py-4 px-5 w-full">
-              <div className="row-span-1  border-b-2 mobile-categories-top grid pb-2 ">
-                <div className="text-lg text-blue-800">
-                  <Link to={"/authentication/login"}>Login</Link>
-                </div>
-                <div className="text-lg text-blue-800">
-                  <Link to={"/authentication/register"}>Signup</Link>
-                </div>
-              </div>
-              <div className="row-span-7 mt-5 mobile-categories-center border-b-2 ">
-                <h3 className="text-xl opacity-80 font-sans">Most Popular</h3>
-                <div className="grid gap-2 mt-2">
-                  {categories.map((category, index) => {
-                    return (
-                      <div
-                        key={index}
-                        className="grid grid-cols-4 items-center  hover:cursor-pointer hover:text-blue-700"
-                      >
-                        <Link
-                          to={category.link}
-                          className="col-span-3 text-xl font-sans"
-                        >
-                          {category.name}
-                        </Link>
-                        <div className="col-span-1 flex justify-end">
-                          <p className="text-xl"> &gt; </p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-              <div className="row-span-2 mobile-categories-end mt-5 ">
-                <h3 className="text-xl font-sans opactiy-80">
-                  More From Himalayan Sikshya
-                </h3>
-                <div className="grid gap-1 mt-1">
-                  <div className="grid grid-cols-4 items-center">
-                    <p className="text-lg col-span-3 hover:cursor-pointer hover:text-blue-700">
-                      About Us
-                    </p>
-                    <div className="col-span-1 flex justify-end">
-                      <p className="text-xl"> &gt; </p>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-4 items-center">
-                    <p className="text-lg col-span-3 hover:cursor-pointer hover:text-blue-700">
-                      Business
-                    </p>
-                    <div className="col-span-1 flex justify-end">
-                      <p className="text-xl"> &gt; </p>
-                    </div>
-                  </div>
-                  <div
-                    className="grid grid-cols-4 items-center"
-                    onClick={() => {
-                      navigate("/becomeInstructor");
-                    }}
-                  >
-                    <p className="text-lg col-span-3 hover:cursor-pointer hover:text-blue-700">
-                      Become A Instructor
-                    </p>
-                    <div className="col-span-1 flex justify-end">
-                      <p className="text-xl"> &gt; </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className={
-                toggleSidebar
-                  ? " z-20  text-2xl rounded-full p-2 close transition-all duration-500 ease-out"
-                  : "hidden"
-              }
-            >
-              <IoMdClose
-                className="cursor-pointer"
+              <img
+                src={logo}
+                alt=""
+                className="w-20"
                 onClick={() => {
-                  setToggleSidebar(false);
+                  navigate("/");
                 }}
               />
             </div>
-          </div>
-        </div>
-        <div>
-          <img
-            src={logo}
-            alt=""
-            className="w-20"
-            onClick={() => {
-              navigate("/");
-            }}
-          />
-        </div>
-        <div className="flex">
-          <div className="pr-2">
-            <MdOutlineSearch className="text-3xl" />
-          </div>
-          <div className="pl-2">
-            <BsCart3 className="text-3xl" />
-          </div>
-        </div>
+            <div className="flex">
+              <div className="pr-2">
+                <MdOutlineSearch className="text-3xl" />
+              </div>
+              <div className="pl-2">
+                <BsCart3 className="text-3xl" />
+              </div>
+            </div>
       </div>
       <div
         className={`hidden md:grid md:grid-cols-12 px-5 py-3 items-center ${className}`}
