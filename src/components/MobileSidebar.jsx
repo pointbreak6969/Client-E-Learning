@@ -1,67 +1,155 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
-
+import { Link } from "react-router-dom";
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
-
+  SidebarSeparator,
+  SidebarFooter,
+} from "@/components/ui/sidebar";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 // Menu items.
-const items = [
+const categories = [
   {
-    title: "Home",
-    url: "#",
-    icon: Home,
+    name: "Development",
+    subItems: [
+      "Web Development",
+      "Mobile Development",
+      "Web3 Development",
+      "Game Development",
+      "Software Development",
+    ],
   },
   {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
+    name: "Business",
+    subItems: [
+      "Entrepreneurship",
+      "Communication",
+      "Management",
+      "Sales",
+      "Strategy",
+    ],
   },
   {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
+    name: "Finance",
+    subItems: [
+      "Investing",
+      "Trading",
+      "Personal Finance",
+      "Accounting",
+      "Cryptocurrency",
+    ],
   },
   {
-    title: "Search",
-    url: "#",
-    icon: Search,
+    name: "Software and IT",
+    subItems: [
+      "Networking",
+      "Security",
+      "Cloud Computing",
+      "DevOps",
+      "Data Science",
+    ],
   },
   {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
+    name: "Design",
+    subItems: [
+      "Graphic Design",
+      "UX/UI Design",
+      "Interior Design",
+      "Fashion Design",
+      "3D Design",
+    ],
   },
-]
+  {
+    name: "Marketing",
+    subItems: [
+      "Digital Marketing",
+      "Content Marketing",
+      "SEO",
+      "Social Media Marketing",
+      "Email Marketing",
+    ],
+  },
+];
 
 export function MobileSidebar() {
   return (
     <Sidebar>
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild>
+              <Link to={"authentication/login"}>Login</Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+          <SidebarMenuButton asChild>
+              <Link to={"authentication/register"}>Signup</Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
+      <SidebarSeparator />
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>Most Popular</SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
+          <Accordion type="single" collapsible className="w-full">
+              {categories.map((category) => (
+                <AccordionItem key={category.name} value={category.name}>
+                  <AccordionTrigger>
+                    <span>{category.name}</span>
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <SidebarMenu>
+                      {category.subItems.map((subItem) => (
+                        <SidebarMenuItem key={subItem}>
+                          <SidebarMenuButton asChild>
+                            <Link to={subItem.link}>
+                              <span>{subItem}</span>
+                            </Link>
+                          </SidebarMenuButton>
+                        </SidebarMenuItem>
+                      ))}
+                    </SidebarMenu>
+                  </AccordionContent>
+                </AccordionItem>
               ))}
-            </SidebarMenu>
+            </Accordion>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarSeparator />
+      <SidebarFooter>
+        <SidebarGroup>
+          <SidebarGroupLabel>More From Himalayan Sikshya</SidebarGroupLabel>
+          <SidebarGroupContent>
+            {" "}
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link to="/about">About Us</Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link to={"/becomeAInstructor"}>Become A Instructor</Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarFooter>
     </Sidebar>
-  )
+  );
 }

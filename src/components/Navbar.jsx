@@ -1,14 +1,10 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import logo from "../assets/Logo.png";
-import { RxHamburgerMenu } from "react-icons/rx";
 import {
   BsCart3,
   MdOutlineSearch,
   MdOutlineArrowDropDown,
-  IoMdClose,
 } from "../utlis/reactIcons.js";
-
-import useClickAway from "../utlis/useClickAway";
 import "../styles/navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -19,16 +15,74 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuPortal,
+  DropdownMenuSubContent,
 } from "./ui/dropdown-menu";
 import { SidebarTrigger, SidebarProvider } from "./ui/sidebar";
 import { MobileSidebar } from "./MobileSidebar";
 const categories = [
-  { name: "Development", link: "/development" },
-  { name: "Business", link: "/business" },
-  { name: "Finance", link: "/finance" },
-  { name: "Software and IT", link: "/software" },
-  { name: "Design", link: "/design" },
-  { name: "Marketing", link: "/marketing" },
+  {
+    name: "Development",
+    subItems: [
+      "Web Development",
+      "Mobile Development",
+      "Web3 Development",
+      "Game Development",
+      "Software Development",
+    ],
+  },
+  {
+    name: "Business",
+    subItems: [
+      "Entrepreneurship",
+      "Communication",
+      "Management",
+      "Sales",
+      "Strategy",
+    ],
+  },
+  {
+    name: "Finance",
+    subItems: [
+      "Investing",
+      "Trading",
+      "Personal Finance",
+      "Accounting",
+      "Cryptocurrency",
+    ],
+  },
+  {
+    name: "Software and IT",
+    subItems: [
+      "Networking",
+      "Security",
+      "Cloud Computing",
+      "DevOps",
+      "Data Science",
+    ],
+  },
+  {
+    name: "Design",
+    subItems: [
+      "Graphic Design",
+      "UX/UI Design",
+      "Interior Design",
+      "Fashion Design",
+      "3D Design",
+    ],
+  },
+  {
+    name: "Marketing",
+    subItems: [
+      "Digital Marketing",
+      "Content Marketing",
+      "SEO",
+      "Social Media Marketing",
+      "Email Marketing",
+    ],
+  },
 ];
 const Navbar = ({ className }) => {
   const navigate = useNavigate();
@@ -43,26 +97,26 @@ const Navbar = ({ className }) => {
       <div className="flex flex-nowrap justify-between p-3 shadow-md items-center md:hidden">
         <SidebarProvider>
           <MobileSidebar />
-          <SidebarTrigger/>
+          <SidebarTrigger />
         </SidebarProvider>
         <div>
-              <img
-                src={logo}
-                alt=""
-                className="w-20"
-                onClick={() => {
-                  navigate("/");
-                }}
-              />
-            </div>
-            <div className="flex">
-              <div className="pr-2">
-                <MdOutlineSearch className="text-3xl" />
-              </div>
-              <div className="pl-2">
-                <BsCart3 className="text-3xl" />
-              </div>
-            </div>
+          <img
+            src={logo}
+            alt=""
+            className="w-20"
+            onClick={() => {
+              navigate("/");
+            }}
+          />
+        </div>
+        <div className="flex">
+          <div className="pr-2">
+            <MdOutlineSearch className="text-3xl" />
+          </div>
+          <div className="pl-2">
+            <BsCart3 className="text-3xl" />
+          </div>
+        </div>
       </div>
       <div
         className={`hidden md:grid md:grid-cols-12 px-5 py-3 items-center ${className}`}
@@ -84,15 +138,25 @@ const Navbar = ({ className }) => {
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                {categories.map((category, index) => {
-                  return (
-                    <DropdownMenuItem key={index}>
-                      <Link to={category.link} className="item">
-                        {category.name}
-                      </Link>
-                    </DropdownMenuItem>
-                  );
-                })}
+                {categories.map((category) => (
+                  <DropdownMenuSub key={category.name}>
+                    <DropdownMenuSubTrigger>
+                      <span>{category.name}</span>
+                    </DropdownMenuSubTrigger>
+
+                    {/* DropdownMenuPortal to handle sub-menu positioning */}
+                    <DropdownMenuPortal>
+                      <DropdownMenuSubContent>
+                        {category.subItems.map((item) => (
+                          // Explicitly return the DropdownMenuItem here
+                          <DropdownMenuItem key={item}>
+                            <span>{item}</span>
+                          </DropdownMenuItem>
+                        ))}
+                      </DropdownMenuSubContent>
+                    </DropdownMenuPortal>
+                  </DropdownMenuSub>
+                ))}
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
