@@ -113,9 +113,6 @@ const Navbar = ({ className }) => {
           <div className="pr-2">
             <MdOutlineSearch className="text-3xl" />
           </div>
-          <div className="pl-2">
-            <BsCart3 className="text-3xl" />
-          </div>
         </div>
       </div>
       <div

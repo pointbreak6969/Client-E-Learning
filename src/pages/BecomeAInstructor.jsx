@@ -35,7 +35,9 @@ const BecomeAInstructor = () => {
                 <h3>Jump into Course Creation</h3>
               </div>
               <div className=" d-flex justify-content-center mt">
-                <button className="button-69">Create Your Course</button>
+                <button onClick={()=>{
+                  navigate("/createCourse")
+                }} className="button-69">Create Your Course</button>
               </div>
             </div>
             <div className="instructor-card-second">
@@ -107,7 +109,9 @@ const BecomeAInstructor = () => {
           </div>
           <div className="instructor-footer">
             <p className="p-5">Are you Ready to Begin?</p>
-            <button className="button-69">Create your course</button>
+            <button onClick={()=>{
+                  navigate("/createCourse")
+                }} className="button-69">Create your course</button>
           </div>
         </div>
       </>

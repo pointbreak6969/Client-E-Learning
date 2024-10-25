@@ -10,6 +10,7 @@
 }
 
 .about_img {
+    
     max-width: 100%;
     /* Make the image responsive by setting its maximum width to 100% */
     height: auto;
