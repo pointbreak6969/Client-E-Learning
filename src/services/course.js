@@ -33,6 +33,12 @@ class CourseService {
       console.log(error);
     }
   }
+  async getUserUploadedCourse() {
+    const response = await axios.get("http://localhost:5050/api/course/getUserCourse", {
+      withCredentials: true,
+    })
+    return response.data
+  }
 }
 const courseService = new CourseService()
 export default courseService;

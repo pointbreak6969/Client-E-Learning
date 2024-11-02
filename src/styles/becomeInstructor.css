@@ -32,6 +32,9 @@
     cursor: pointer;
   }
   
+  .user-course {
+padding: 2% 5%;
+  }
   .instructor-cards {
     padding: 0 5%;
     font-family: "Poppins", sans-serif;
@@ -73,6 +76,7 @@
     align-items: center;
   }
   
+
   .card-fourth-left {
     flex: 0.5;
     margin: 3% 0;
