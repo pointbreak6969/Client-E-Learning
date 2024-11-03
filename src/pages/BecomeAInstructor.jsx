@@ -6,10 +6,11 @@ import { Link, useNavigate } from "react-router-dom";
 import "../styles/becomeInstructor.css";
 import courseService from "@/services/course";
 import { useEffect, useState } from "react";
-
+import { Progress } from "@/components/ui/progress";
 const BecomeAInstructor = () => {
   const navigate = useNavigate();
   const [userCourse, setUserCourse] = useState();
+  const [progress, setProgress] = useState(10)
   useEffect(() => {
     const fetchData = async () => {
       const response = await courseService.getUserUploadedCourse();
@@ -43,17 +44,24 @@ const BecomeAInstructor = () => {
       <div className="become-instructor-body">
         {userCourse ? (
           <>
+            <div className="instructor-cards">
+              <h1>Course</h1>
+            </div>
             <div className="instructor-cards mb-20 ">
-              <div className="shadow-xl p-4">
+              <div className="shadow-xl p-4 flex gap-10">
                 <div>
                   <img src={userCourse.thumbnail.url} className="w-28" />
+                </div>
+                <div>
+                  <h1>{userCourse.name}</h1>
+                </div>
+                <div className="flex items-center"> 
+                <Progress value={33} />
                 </div>
               </div>
             </div>
           </>
-        ) : (
-          <p>Loading...</p>
-        )}
+        ) : null}
         <div className="instructor-cards">
           {userCourse ? null : (
             <div className="instructor-card-first box-shadow">
