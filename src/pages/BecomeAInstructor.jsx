@@ -10,7 +10,7 @@ import { Progress } from "@/components/ui/progress";
 const BecomeAInstructor = () => {
   const navigate = useNavigate();
   const [userCourse, setUserCourse] = useState();
-  const [progress, setProgress] = useState(10)
+  const [progress, setProgress] = useState(10);
   useEffect(() => {
     const fetchData = async () => {
       const response = await courseService.getUserUploadedCourse();
@@ -48,16 +48,8 @@ const BecomeAInstructor = () => {
               <h1>Course</h1>
             </div>
             <div className="instructor-cards mb-20 ">
-              <div className="shadow-xl p-4 flex gap-10">
-                <div>
-                  <img src={userCourse.thumbnail.url} className="w-28" />
-                </div>
-                <div>
-                  <h1>{userCourse.name}</h1>
-                </div>
-                <div className="flex items-center"> 
-                <Progress value={33} />
-                </div>
+              <div className="shadow-xl p-4  ">
+                
               </div>
             </div>
           </>
